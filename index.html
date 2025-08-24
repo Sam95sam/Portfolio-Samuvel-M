@@ -26,25 +26,33 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: #ffffff;
+      background: #004d40;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 25px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 15px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
     nav h1 {
       font-size: 22px;
-      color: #009688;
+      color: #ffffff;
       cursor: pointer;
       font-weight: bold;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+    }
+
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 25px;
     }
     .nav-links a {
-      color: #009688;
+      color: #ffffff;
       text-decoration: none;
       font-weight: 600;
       font-size: 17px;
@@ -53,20 +61,22 @@
       transition: all 0.3s;
     }
     .nav-links a:hover {
-      background: #009688;
+      background: #26c6da;
       color: #fff;
     }
+
     @media (max-width: 768px) {
-      .nav-links { 
-        display: none; 
-        flex-direction: column; 
-        width: 100%; 
-        background: #004d40; 
-        position: absolute; 
-        top: 60px; left: 0; 
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #00332c;
+        position: absolute;
+        top: 60px; left: 0;
       }
-      .nav-links a { color: #fff; }
       .nav-links.show-nav { display: flex; }
+      .nav-links a { padding: 15px; border-bottom: 1px solid #004d40; }
     }
 
     /* Hero */
@@ -78,7 +88,7 @@
       border-radius: 0 0 30px 30px;
     }
     .hero h1 { font-size: 36px; margin-bottom: 10px; }
-    .hero p { font-size: 20px; }
+    .hero p { font-size: 20px; font-weight: 500; }
 
     .hero img {
       margin-top: 20px;
@@ -109,18 +119,21 @@
       margin-top: 20px;
     }
     .skill-item {
-      background: #f7f9fc;
-      padding: 15px;
+      padding: 20px;
       border-radius: 12px;
       text-align: center;
-      transition: all 0.3s;
+      color: #fff;
+      font-weight: 600;
+      transition: transform 0.3s;
     }
-    .skill-item:hover {
-      background: #e0f2f1;
-      transform: scale(1.05);
-    }
-    .skill-item i { font-size: 30px; margin-bottom: 10px; }
-    .skill-item span { display: block; font-weight: 600; }
+    .skill-item i { font-size: 35px; margin-bottom: 10px; display: block; }
+    .skill-item:hover { transform: scale(1.05); }
+
+    .python { background: #3776AB; }
+    .php { background: #8892BF; }
+    .html { background: #E44D26; }
+    .css { background: #1572B6; }
+    .mysql { background: #00618A; }
 
     /* Projects */
     .project {
@@ -134,7 +147,7 @@
     .project a {
       background: #009688;
       color: #fff;
-      padding: 5px 12px;
+      padding: 6px 14px;
       margin-left: 10px;
       border-radius: 5px;
       font-size: 14px;
@@ -142,14 +155,21 @@
     }
     .project a:hover { background: #00796b; }
 
-    /* Resume Button */
+    /* Resume */
+    .resume-card {
+      text-align: center;
+      padding: 25px;
+      background: #f1f8e9;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .resume-card p { margin-bottom: 15px; }
     .resume-btn {
       display: inline-block;
       background: #ff9800;
       color: white;
       padding: 12px 25px;
       border-radius: 30px;
-      margin-top: 15px;
       font-weight: bold;
       text-decoration: none;
       transition: 0.3s;
@@ -160,7 +180,7 @@
     .contact-item {
       display: flex;
       align-items: center;
-      margin: 10px 0;
+      margin: 12px 0;
       font-size: 16px;
     }
     .contact-item i {
@@ -189,8 +209,10 @@
   </style>
 </head>
 <body>
+  <!-- Navbar -->
   <nav>
-    <h1 onclick="toggleMenu()">Samuvel M <span style="font-size: 20px;">&#9776;</span></h1>
+    <h1>Samuvel M</h1>
+    <span class="menu-toggle" onclick="toggleMenu()">&#9776;</span>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
@@ -201,31 +223,42 @@
     </div>
   </nav>
 
+  <!-- Hero -->
   <header class="hero">
     <h1>Hi, I'm Samuvel M</h1>
-    <p>Software Developer</p>
+    <h1>Software Developer</h1>
     <img src="IMG_20250628_150848.jpg" alt="Samuvel M">
   </header>
 
+  <!-- About -->
   <section class="glass" id="about">
     <h2>About Me</h2>
     <p>Hi, My name is Samuvel M, and I'm from Thanjavur. I have completed my Master's Degree (MCA) and Bachelor's Degree (B.Sc Computer Science) from Bishop Heber College, Tiruchirapalli. I have strong knowledge in Python, HTML, CSS, PHP, and MySQL. I have developed Full Stack Web Applications such as <strong>Adventure Activities Booking System</strong> and <strong>Road Map for Tourists</strong>.</p>
   </section>
 
+  <!-- Skills -->
   <section class="glass" id="skills">
     <h2>Skills</h2>
     <div class="skills-container">
-      <div class="skill-item"><i class="fab fa-python"></i><span>Python</span></div>
-      <div class="skill-item"><i class="fab fa-php"></i><span>PHP</span></div>
-      <div class="skill-item"><i class="fab fa-html5"></i><span>HTML</span></div>
-      <div class="skill-item"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
-      <div class="skill-item"><i class="fas fa-database"></i><span>MySQL</span></div>
+      <div class="skill-item python"><i class="fab fa-python"></i>Python</div>
+      <div class="skill-item php"><i class="fab fa-php"></i>PHP</div>
+      <div class="skill-item html"><i class="fab fa-html5"></i>HTML</div>
+      <div class="skill-item css"><i class="fab fa-css3-alt"></i>CSS</div>
+      <div class="skill-item mysql"><i class="fas fa-database"></i>MySQL</div>
     </div>
   </section>
 
+  <!-- Projects -->
   <section class="glass" id="projects">
     <h2>Projects</h2>
     <div class="project">
+      <h3>Road Map for Tourists
+        <a href="https://traveltourists.netlify.app/" target="_blank">Live</a>
+      </h3>
+      <p>Technologies: HTML, CSS, JavaScript, PHP, MySQL<br>
+      A platform to find travel companions, personalized travel ideas, and tourist maps.</p>
+  </div>
+    
       <h3>Adventure Activities Booking System 
         <a href="https://adventure-activity.netlify.app/" target="_blank">Live</a>
       </h3>
@@ -233,14 +266,9 @@
       A web app to book adventure activities like Scuba Diving, Paragliding, Bungee Jumping, and more.</p>
     </div>
     <div class="project">
-      <h3>Road Map for Tourists
-        <a href="https://traveltourists.netlify.app/" target="_blank">Live</a>
-      </h3>
-      <p>Technologies: HTML, CSS, JavaScript, PHP, MySQL<br>
-      A platform to find travel companions, personalized travel ideas, and tourist maps.</p>
-    </div>
   </section>
 
+  <!-- Certifications -->
   <section class="glass" id="certificates">
     <h2>Certifications</h2>
     <ul>
@@ -249,11 +277,15 @@
     </ul>
   </section>
 
+  <!-- Resume -->
   <section class="glass" id="resume">
     <h2>Resume</h2>
-    <a href="Samuvel M Resume.pdf" class="resume-btn" target="_blank">View Resume</a>
+    <div class="resume-card">
+      <a href="Samuvel M Resume.pdf" class="resume-btn" target="_blank">Download Resume</a>
+    </div>
   </section>
 
+  <!-- Contact -->
   <section class="glass" id="contact">
     <h2>Contact</h2>
     <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:95samuvel@gmail.com">95samuvel@gmail.com</a></div>
@@ -261,13 +293,14 @@
     <div class="contact-item"><i class="fas fa-map-marker-alt"></i><a href="https://www.google.com/maps/place/Thanjavur" target="_blank">Thanjavur, Tamil Nadu, India</a></div>
   </section>
 
+  <!-- Footer -->
   <footer class="footer-section">
     <div>
       <a href="https://linkedin.com/in/samuvel-m-19728a207" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
       <a href="https://github.com/Sam95sam" target="_blank"><i class="fab fa-github fa-2x"></i></a>
       <a href="mailto:95samuvel@gmail.com"><i class="fas fa-envelope fa-2x"></i></a>
     </div>
-    <p>&copy; 2025 Samuvel M. All rights reserved.</p>
+    <p>&copy; 2025 All rights reserved.</p>
   </footer>
 
   <script>
@@ -276,4 +309,4 @@
     }
   </script>
 </body>
-</html>
+                                    </html>
